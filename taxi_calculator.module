@@ -1,0 +1,37 @@
+<?php
+
+function taxi_calculator_init () {
+
+}
+
+function taxi_calculator_theme ($existing, $type, $theme, $path) {
+  return array(
+    'taxi_calculator_output' => array(
+      'arguments' => array(),
+      'template' => 'taxi_calculator_output',
+    ),
+  );
+}
+
+function taxi_calculator_perm() {
+  return array('access taxi calculator');
+}
+
+function taxi_calculator_menu() {
+  $items['taxi/calculator'] = array(
+    'page callback' => 'taxi_calculator_callback',
+    'access arguments' => array('access taxi calculator'), 
+  );
+  return $items;
+}
+
+function taxi_calculator_callback () {
+  drupal_set_html_head('<script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=AIzaSyAXdSBHSU6EojI82aYrguqvk7-XpNRhS_s"></script>');
+  drupal_add_js(drupal_get_path('module', 'taxi_calculator').'/taxi_calculator.js');
+  drupal_add_css(drupal_get_path('module', 'taxi_calculator').'/taxi_calculator.css');
+  drupal_add_js('window.onload = function() { initialize(); }', 'inline');
+
+  $output = theme('taxi_calculator_output');
+  return $output;
+}
+

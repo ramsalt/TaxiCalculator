@@ -1,0 +1,9 @@
+#kart{
+  width: 674px;
+  height: 300px;
+  overflow: hidden;
+  border-top: solid 1px #E0E0E0;
+  border-bottom: solid 1px #E0E0E0;
+  background-color: #FBFBFB;
+  margin-bottom: 5px;
+}
